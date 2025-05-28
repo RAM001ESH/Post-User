@@ -1,0 +1,51 @@
+{
+  "login": [
+    {
+      "userName": "ramesh@gmail.com",
+      "password": "India_123",
+      "id": "2f9e"
+    }
+  ],
+  "Scheme": [
+    {
+      "SchemeName": "PP",
+      "id": "c290"
+    },
+    {
+      "SchemeName": "FPP",
+      "id": "07a9"
+    }
+  ],
+  "postUser": [
+    {
+      "id": "1",
+      "ContactID": "3f2504e0-4f89-11d3-9a0c-0305e82c3301",
+      "Name": "Ramesh",
+      "Mobile": "+91 7881212012",
+      "Email": "ramesh@gmail.com",
+      "Age": "25",
+      "Scheme": "PP",
+      "JoiningDate": "15-04-2025"
+    },
+    {
+      "id": "1375",
+      "ContactID": "5fa8e723-73a4-4636-b6d6-eeb5bfbf223a",
+      "Name": "Karthick",
+      "Mobile": "+91 9080409662",
+      "Email": "karthick22@gmail.com",
+      "Scheme": "PP"
+    }
+  ],
+  "Transcation": [
+    {
+      "id": "1",
+      "ContactID": "3f2504e0-4f89-11d3-9a0c-0305e82c3301",
+      "Name": "Ramesh",
+      "Scheme": "PP",
+      "Amount": 1000,
+      "TranscationDate": "25-04-2025",
+      "CreditMonth": "March",
+      "EntryBy": "Ramesh"
+    }
+  ]
+}

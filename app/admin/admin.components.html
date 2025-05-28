@@ -1,0 +1,38 @@
+<div class="main-page">
+
+    <div class="side-bar">
+        <div class="main-header">
+            <img src="assets/Images/Technology-1.jpg" alt="">
+        </div>
+        <nav>
+            <ul>
+                <ng-container *ngFor="let data of LstMenu">
+                    <a routerLink="{{data.MenuPath}}" style="text-decoration: none;" class="menu-item"
+                        [ngClass]="{'active' : selectedItem === data.MenuName}" (click)="selectItem(data)">
+                        <li [class]="data.MenuIcon"></li>
+                        <span class="ml-1.5 ">{{data.MenuName}}</span>
+                    </a>
+
+                </ng-container>
+            </ul>
+        </nav>
+
+        <div class="logout">
+            <button class="btn btn-danger" routerLink="/auth/sign-in"><i
+                    class="fa-solid fa-right-from-bracket mr-1.5"></i> Logout</button>
+        </div>
+
+    </div>
+
+    <div class="topbar">
+        <i class="fa-solid fa-bars cursor-pointer"></i>
+        <div class="user flex flex-row items-center">
+            Ramesh
+            <i class="fa-solid fa-circle-user ml-1.5 cursor-pointer"></i>
+        </div>
+    </div>
+
+    <div class="content">
+        <router-outlet></router-outlet>
+    </div>
+</div>

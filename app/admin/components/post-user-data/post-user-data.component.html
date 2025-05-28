@@ -1,0 +1,163 @@
+<div class="sys-card">
+    <div class="sys-card-header">
+        <div>History</div>
+        <div (click)="btnAddNewTranscation()"><i class="fa-solid fa-square-plus text-3xl cursor-pointer"
+                title="Add New Transaction"></i></div>
+    </div>
+    <div class="sys-card-body">
+
+        <div class="header-section">
+            <div class="flex flex-row space-x-2">
+                <div class="">
+                    <div for="name">Name</div>
+                    <p-dropdown class="custom-dropdown-sm" [options]="LstUser" [showClear]="true" [autoDisplayFirst]="false" optionLabel="Name"
+                        [(ngModel)]="Name">
+                        <ng-template pTemplate="header">
+                            <div class="dropdown-header-row">
+                                <strong class="col-name">Name</strong>
+                                <strong class="col-mobile">Mobile</strong>
+                                <strong class="col-scheme">Scheme</strong>
+                            </div>
+                        </ng-template>
+
+                        <ng-template let-city pTemplate="item">
+                            <div class="dropdown-item-row">
+                                <div class="col-name">{{ city.Name }}</div>
+                                <div class="col-mobile">{{ city.Mobile }}</div>
+                                <div class="col-scheme">{{ city.Scheme }}</div>
+                            </div>
+                        </ng-template>
+                    </p-dropdown>
+                </div>
+
+                <div>
+                    <div>Date</div>
+                    <p-dropdown class="custom-dropdown-sm w-48" [showClear]="true" [options]="LstDateRange" optionLabel="value"
+                        (onChange)="dateChangeEvent($event)"></p-dropdown>
+                </div>
+
+                <div class="w-48">
+                    <div>From Date</div>
+                    <p-calendar inputId="integeronly" [showIcon]="true" class="calendar-sm" dateFormat="dd-mm-yy"
+                        [(ngModel)]="MlDate.fromDate"></p-calendar>
+                </div>
+
+                <div class="w-48">
+                    <div>To Date</div>
+                    <p-calendar inputId="integeronly" [showIcon]="true" class="calendar-sm" dateFormat="dd-mm-yy"
+                        [(ngModel)]="MlDate.toDate"></p-calendar>
+                </div>
+
+                <div class="w-48 button">
+                    <p-button (click)="btnSearch()">Search</p-button>
+                </div>
+            </div>
+        </div>
+
+        <div class="body-section">
+            <p-table [value]="LstTransaction" styleClass="p-datatable-striped" class="table-data"
+                [paginator]="IsPagination" [rowHover]="true" [rows]="PerPageSize">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Scheme</th>
+                        <th>Amount</th>
+                        <th>Transcation Date</th>
+                        <th>Credit Month</th>
+                        <th>Entry By</th>
+                    </tr>
+                </ng-template>
+
+                <ng-template pTemplate="body" let-data let-rowIndex="rowIndex">
+                    <tr *ngIf="LstTransaction.length == 0">
+                        <td colspan="7">No record available</td>
+                    </tr> 
+                    <tr>
+                        <td>{{rowIndex + 1}}</td>
+                        <td>{{data.Name}}</td>
+                        <td>{{data.Scheme}}</td>
+                        <td>{{data.Amount | currency:'INR'}}</td>
+                        <td>{{data.TranscationDate}}</td>
+                        <td>{{data.CreditMonth}}</td>
+                        <td>{{data.EntryBy}}</td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    </div>
+</div>
+
+<p-dialog header="Add New Transaction" [(visible)]="IsOpenDialog" [modal]="true" [style]="{height: '70%'}">
+    <form [formGroup]="FrmEntry">
+        <div class="grid grid-cols-2 gap-x-3">
+            <div class="mb-3">
+                <div for="name">Name</div>
+                <p-dropdown formControlName="Name" class="data custom-dropdown-sm" [options]="LstUser"
+                    [showClear]="true" optionLabel="Name">
+                    <ng-template pTemplate="header">
+                        <div class="dropdown-header-row">
+                            <strong class="col-name">Name</strong>
+                            <strong class="col-code">Scheme</strong>
+                        </div>
+                    </ng-template>
+
+                    <ng-template let-city pTemplate="item">
+                        <div class="dropdown-item-row">
+                            <div class="col-name">{{ city.Name }}</div>
+                            <div class="col-code">{{ city.Scheme }}</div>
+                        </div>
+                    </ng-template>
+                </p-dropdown>
+                <small class="error" *ngIf="FrmEntry.controls.Name.invalid && FrmEntry.controls.Name.touched">Name is
+                    required</small>
+            </div>
+
+            <div class="mb-3">
+                <div for="name">Scheme</div>
+                <p-dropdown formControlName="Scheme" class="data custom-dropdown-sm" [options]="LstScheme"
+                    [showClear]="true" optionLabel="SchemeName"></p-dropdown>
+                <small class="error"
+                    *ngIf="FrmEntry.controls.Scheme.invalid && FrmEntry.controls.Scheme.touched">Schemeis
+                    required</small>
+            </div>
+
+            <div class="mb-3">
+                <div for="name">Amount (₹)</div>
+                <p-inputNumber inputId="integeronly" class="data" formControlName="Amount"></p-inputNumber>
+                <small class="error" *ngIf="FrmEntry.controls.Amount.invalid && FrmEntry.controls.Amount.touched">Amount
+                    is
+                    required</small>
+            </div>
+
+            <div class="mb-3">
+                <div for="name">Credit Month</div>
+                <p-dropdown formControlName="CreditMonth" class="data custom-dropdown-sm" [options]="LstMonths"
+                    [showClear]="true"></p-dropdown>
+                <small class="error"
+                    *ngIf="FrmEntry.controls.CreditMonth.invalid && FrmEntry.controls.CreditMonth.touched">Credit Month
+                    is
+                    required</small>
+            </div>
+
+            <div class="mb-3 col-span-1">
+                <div for="name">Transaction Date</div>
+                <p-calendar inputId="integeronly" [showIcon]="true" formControlName="TranscationDate"
+                    class="data calendar-sm" dateFormat="dd-mm-yy"></p-calendar>
+                <small class="error"
+                    *ngIf="FrmEntry.controls.TranscationDate.invalid && FrmEntry.controls.TranscationDate.touched">Transcation
+                    Date is
+                    required</small>
+            </div>
+
+        </div>
+    </form>
+
+    <ng-template pTemplate="footer">
+        <div class="flex justify-content-end gap-2">
+            <p-button label="Cancel" (onClick)="IsOpenDialog = false" />
+            <p-button label="Save" (click)="btnSave()" />
+        </div>
+    </ng-template>
+</p-dialog>
+<p-toast />

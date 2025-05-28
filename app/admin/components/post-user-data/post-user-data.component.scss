@@ -1,0 +1,89 @@
+.body-section {
+  height: 100%;
+}
+
+.table-data {
+  height: 100%;
+  overflow: auto;
+}
+
+
+.dropdown-item-row,
+.dropdown-header-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 8px;
+}
+
+.col-scheme {
+  width: 8rem;
+  font-weight: 500;
+}
+
+.col-name {
+  width: 8rem;
+  font-weight: 500;
+}
+
+.col-mobile {
+  width: 8rem;
+  font-weight: 500;
+}
+
+.data {
+  width: 100%;
+  display: inline-grid;
+}
+
+.button{
+  margin-top: 22px;
+}
+
+.header-section {
+  height: 110px;
+}
+
+.body-section {
+  height: calc(100% - 110px);
+}
+
+
+::ng-deep .p-calendar.calendar-sm .p-inputtext {
+  height: 2rem !important;
+  font-size: 0.75rem !important;
+  padding: 0.2rem 0.5rem !important;
+}
+
+::ng-deep .p-calendar.calendar-sm .p-datepicker-trigger {
+  width: 1.8rem !important;
+  height: 2.25rem !important;
+  padding: 0.2rem !important;
+}
+
+::ng-deep .p-datepicker {
+  font-size: 0.75rem !important;
+  width: auto !important;
+  min-width: 12rem !important;
+  padding: 0.5rem !important;
+}
+
+/* Reduce cell sizes */
+::ng-deep .p-datepicker td>span {
+  width: 1.5rem !important;
+  height: 1.5rem !important;
+  line-height: 1.5rem !important;
+  padding: 0 !important;
+  font-size: 0.75rem !important;
+}
+
+/* Reduce padding around the table */
+::ng-deep .p-datepicker table {
+  width: auto !important;
+  table-layout: auto !important;
+}
+
+/* Reduce size of month/year dropdowns */
+::ng-deep .p-datepicker-header select {
+  font-size: 0.75rem !important;
+  padding: 0.2rem !important;
+}

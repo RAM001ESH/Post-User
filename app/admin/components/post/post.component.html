@@ -1,0 +1,93 @@
+<div class="sys-card">
+    <div class="sys-card-header">
+        <div>POST</div>
+        <div (click)="btnCreateUser()"><i class="fa-solid fa-square-plus text-3xl cursor-pointer"
+                title="Create New User"></i></div>
+    </div>
+    <div class="sys-card-body">
+        <div class="grid grid-cols-2 xl:grid-cols-2 2xl:grid-cols-4 gap-2">
+            <p-card [header]="data.Name" *ngFor="let data of LstPostUser" class="shadow-lg">
+                <div class="grid grid-cols-2 gap-2">
+                    <div>
+                        <div class="label-header">Mobile</div>
+                        <div class="label-data">{{data.Mobile}}</div>
+                    </div>
+
+                    <div>
+                        <div class="label-header">Email</div>
+                        <div class="label-data">{{data.Email}}</div>
+                    </div>
+
+                    <div>
+                        <div class="label-header">Scheme</div>
+                        <div class="label-data">{{data.Scheme}}</div>
+                    </div>
+                </div>
+            </p-card>
+        </div>
+    </div>
+</div>
+
+
+<p-dialog header="Create New User" [(visible)]="IsopenDialog" [modal]="true">
+    <form [formGroup]="FrmEntry">
+        <div class="mb-3">
+            <label for="name" class="form-labe">Name</label>
+            <input type="text" id="name" class="form-control" required formControlName="Name">
+            <!-- <small *ngIf="!FrmEntry.controls.Name.invalid && !FrmEntry.controls.Name.touched"><br></small> -->
+            <small class="error" *ngIf="FrmEntry.controls.Name.invalid && FrmEntry.controls.Name.touched">Name is
+                required</small>
+        </div>
+
+        <div class="mb-3">
+            <div class="grid grid-cols-12">
+                <div class="col-span-5">
+                    <label class="form-label">Mobile Code</label>
+                    <select class="form-select" aria-label="Default select example" formControlName="MobileCode">
+                        <option *ngFor="let data of LstMobileCode">{{data}}</option>
+                    </select>
+                </div>
+                <div class="col-span-7">
+                    <label for="mobile" class="form-label">Mobile</label>
+                    <input type="text" id="mobile" class="form-control" formControlName="Mobile">
+                    <small class="error"
+                        *ngIf="FrmEntry.controls.Mobile.invalid && FrmEntry.controls.Mobile.touched">Mobile is
+                        required</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="email" class="form-labe">Email</label>
+            <input type="text" id="email" class="form-control" required formControlName="Email">
+            <small class="error" *ngIf="FrmEntry.controls.Email.invalid && FrmEntry.controls.Email.touched">Email is
+                required</small>
+        </div>
+
+        <div class="mb-3">
+            <label for="scheme" class="form-labe">Scheme</label>
+            <select id="scheme" class="form-select" aria-label="Default select example" formControlName="Scheme">
+                <option *ngFor="let data of LstScheme">{{data}}</option>
+            </select>
+            <small class="error" *ngIf="FrmEntry.controls.Scheme.invalid && FrmEntry.controls.Scheme.touched">Scheme is
+                required</small>
+            <!-- <input type="text" id="scheme" class="form-control" required formControlName="Scheme"> -->
+        </div>
+
+        <!-- <div class="mb-3">
+            <label for="age" class="form-labe">Age</label>
+            <input type="text" id="age" class="form-control" [readOnly]="true" formControlName="Age">
+        </div> -->
+
+        <div class="mb-3">
+            <label for="jod" class="form-labe">Joining Date</label>
+            <input type="text" id="jod" class="form-control" required formControlName="JoinDate" [readOnly]="true">
+        </div>
+    </form>
+
+    <div class="flex justify-content-end gap-2">
+        <p-button label="Cancel" severity="secondary" (onClick)="IsopenDialog = false" />
+        <p-button label="Save" (click)="btnSave()" />
+    </div>
+</p-dialog>
+<p-toast />

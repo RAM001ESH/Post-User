@@ -1,0 +1,39 @@
+<div class="sys-card">
+    <div class="sys-card-header">Table</div>
+    <div class="sys-card-body">
+        <!-- <p-button label="Click" class="p-button-success"></p-button> -->
+        <div class="card mt-2">
+            <p-table [value]="LstUser" styleClass="p-datatable-striped" [paginator]="IsPagination" [rowHover]="true"
+                [globalFilterFields]="['title', 'category', 'price', 'description']" [rows]="PerPageSize"
+                [rowsPerPageOptions]="PaginationSize" [scrollable]="true" scrollHeight="100%">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Mobile No.</th>
+                        <th>Email</th>
+                    </tr>
+
+                    <tr>
+                        <th></th>
+                        <th><p-columnFilter field="name" placeholder="Search by name" /></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-product let-rowIndex="rowIndex">
+
+                    <tr *ngIf="LstUser.length == 0">
+                        <td colspan="4">No record available</td>
+                    </tr>
+                    <tr>
+                        <td>{{rowIndex + 1}}</td>
+                        <td>{{product.name}}</td>
+                        <td>{{product.mobile}}</td>
+                        <td>{{product.email}}</td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    </div>
+</div>

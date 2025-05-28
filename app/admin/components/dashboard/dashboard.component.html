@@ -1,0 +1,32 @@
+<div class="sys-card">
+    <div class="sys-card-header">
+        <div>Dashboard</div>
+        <div><i class="fa-solid fa-square-plus cursor-pointer text-3xl" (click)="btnShowCard()"></i></div>
+    </div>
+    <div class="sys-card-body">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. At distinctio, nobis, nihil facilis modi et eos
+        impedit quaerat, quo ipsum consequuntur aliquid! Ullam saepe magnam magni non, libero minus quidem enim illo!
+        Laboriosam aspernatur veniam officia provident nobis voluptatum vitae, nihil ipsam fugiat natus placeat dolores!
+        Magni repellendus, velit odit tempora odio ducimus atque culpa molestias incidunt autem ad, reiciendis impedit
+        asperiores cumque natus ipsam assumenda laboriosam. Sapiente pariatur quod adipisci dolore nihil vitae, amet
+        nobis deleniti, minima, ullam eligendi quaerat libero. Quibusdam quis nam eos, soluta est nihil quas. Voluptates
+        sequi consectetur quia nobis dolores doloremque nihil inventore eligendi labore eius nam ipsam optio tempora
+        voluptas, quisquam cupiditate asperiores consequatur cumque? Quo quam, assumenda facere ratione ab debitis
+        cumque facilis pariatur quos fuga odio excepturi accusamus eveniet a maiores! Explicabo tempora odit placeat
+        cupiditate magni obcaecati, ab nulla, iure nam, voluptate ipsum adipisci nesciunt modi. Officiis similique
+        iusto, modi dolores aperiam quo. Cumque delectus hic illo, ex at corrupti pariatur perferendis temporibus ullam,
+        dicta molestias aut mollitia assumenda odit sunt consequatur modi? Impedit ullam harum vero itaque explicabo
+        error ipsa minima eaque nulla. Blanditiis fugit consectetur voluptatibus explicabo debitis repellendus, quas,
+        odit ipsum labore, reprehenderit nulla culpa! Id, harum dolorum tempora ab molestias expedita dolorem voluptatem
+        nostrum quidem velit soluta dignissimos eius, officiis cupiditate suscipit blanditiis, fugiat architecto ut
+        alias voluptates veniam eum doloribus magni! Recusandae, quia maiores blanditiis unde eligendi natus magni.
+        Dolor, vel accusamus vitae, necessitatibus minima corrupti fugit a molestiae cupiditate earum quia repellat
+        blanditiis totam!
+    </div>
+</div>
+
+<div class="card-modal" *ngIf="IsShowCard" [class.active]="isOpen">
+    <div class="flex flex-row justify-content-end cursor-pointer" (click)="(IsShowCard = false) && (isOpen = false)">
+        <i class="fa-solid fa-circle-xmark text-3xl"></i>
+    </div>
+</div>

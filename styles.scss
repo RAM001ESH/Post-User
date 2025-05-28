@@ -1,0 +1,290 @@
+/* You can add global styles to this file, and also import other style files */
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.p-card .p-card-content {
+    padding: 0 !important;
+}
+
+.p-inputnumber {
+    display: contents !important;
+}
+
+.p-inputnumber-input {
+    width: 100% !important;
+}
+
+/* Shrink the dropdown size (input) */
+.custom-dropdown-sm.p-dropdown {
+    font-size: 14px !important;
+    height: 38px !important;
+    padding: 0 !important;
+}
+
+/* Shrink the dropdown label inside the input box */
+.custom-dropdown-sm .p-dropdown-label {
+    // padding: 6px 10px !important;
+    padding: 0.4rem 0.75rem !important;
+    padding-right: 4rem !important;
+    line-height: 1.4 !important;
+    font-size: 14px !important;
+}
+
+/* Shrink the icon part (arrow) */
+.custom-dropdown-sm .p-dropdown-trigger {
+    width: 30px !important;
+    padding: 4px !important;
+}
+
+/* Shrink the dropdown panel (when open) */
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item {
+    font-size: 14px !important;
+    padding: 6px 10px !important;
+    line-height: 1.2 !important;
+}
+
+
+/* 1. Shrink the calendar input (closed box) */
+.calendar-sm .p-inputtext {
+    font-size: 14px !important;
+    height: 36px !important;
+    padding: 6px 10px !important;
+}
+
+/* 2. Shrink the calendar icon button */
+.calendar-sm .p-datepicker-trigger {
+    width: 2.5rem !important;
+    height: 2.25rem !important;
+    padding: 0.2rem !important;
+}
+
+// /* 3. Shrink the entire calendar popup */
+// .p-datepicker {
+//     font-size: 13px !important;
+//     width: 18rem !important;
+//     /* Shrink the calendar popup width */
+//     height: 18rem !important;
+//     /* Optional: Shrink the calendar popup height */
+// }
+.p-datepicker {
+    font-size: 0.75rem !important;
+    width: auto !important;
+    min-width: 12rem !important;
+    padding: 0.5rem !important;
+}
+
+
+
+/* 4. Shrink the calendar grid (days) */
+.p-datepicker td>span {
+    padding: 0.3rem !important;
+    min-width: 2rem !important;
+    /* Smaller day cell width */
+    min-height: 2rem !important;
+    /* Smaller day cell height */
+}
+
+/* 5. Shrink calendar header and footer */
+.p-datepicker-header,
+.p-datepicker-footer {
+    padding: 0.3rem !important;
+    font-size: 12px !important;
+}
+
+/* 6. Shrink month/year dropdown inside the calendar popup */
+.p-datepicker-month,
+.p-datepicker-year {
+    font-size: 12px !important;
+    padding: 5px 10px !important;
+}
+
+/* Month/year dropdown size */
+.p-datepicker .p-datepicker-header .p-datepicker-title select {
+    font-size: 0.75rem !important;
+    padding: 0.2rem !important;
+}
+
+.p-datepicker table {
+    width: auto !important;
+    table-layout: auto !important;
+}
+
+.p-datepicker td>span {
+    width: 1.5rem !important;
+    height: 1.5rem !important;
+    line-height: 1.5rem !important;
+    padding: 0 !important;
+    font-size: 0.75rem !important;
+}
+
+
+
+.p-inputtextarea {
+    height: 2.5rem !important;
+    font-size: 0.875rem !important;
+    padding: 0.5rem 1rem !important;
+    resize: vertical;
+}
+
+
+// Dialog
+.p-dialog {
+    width: 500px !important;
+    /* Medium width */
+    max-width: 80vw;
+    /* Responsive */
+}
+
+.p-dialog .p-dialog-header {
+    padding: 0.75rem 1rem !important;
+    /* Reduce header padding */
+}
+
+.p-dialog .p-dialog-content {
+    padding: 1rem !important;
+    /* Reduce content padding */
+}
+
+.p-dialog .p-dialog-footer {
+    padding: 0.75rem 0.5rem !important;
+    /* Reduce footer padding */
+}
+
+
+.p-button {
+    font-size: 0.875rem !important;
+    padding: 0.5rem 1rem !important;
+}
+
+.p-inputtext {
+    font-size: 0.875rem !important;
+    height: 2rem !important;
+}
+
+.p-datatable .p-datatable-thead>tr>th,
+.p-datatable .p-datatable-tbody>tr>td {
+    padding: 0.5rem 1rem !important;
+    /* Medium padding */
+}
+
+.p-datatable .p-datatable-tbody>tr {
+    height: 2.5rem !important;
+    /* Medium row height */
+}
+
+/* Make Toast smaller */
+.p-toast {
+    width: 20rem !important;
+    /* smaller width */
+    font-size: 0.8rem !important;
+    /* smaller text */
+}
+
+.p-toast .p-toast-message {
+    padding: 0.4rem 0.5rem !important;
+    /* reduce padding */
+    min-height: auto !important;
+    /* adjust minimum height */
+}
+
+.p-toast .p-toast-message-content {
+    // margin: 0 0 0 0.5rem !important;
+    padding: 0.2rem !important;
+    border-width: 0 !important;
+    /* inside padding smaller */
+}
+
+.p-toast .p-toast-message-text {
+    flex: 1 1 auto !important;
+    margin-left: 0.5rem !important;
+}
+.p-toast .p-toast-message .p-toast-message-content .p-toast-detail{
+    margin: 0 !important;
+}
+
+// .p-toast .p-toast-message .p-toast-message-content .p-toast-summary {
+//     font-weight: 500 !important;
+// }
+
+
+.sys-card {
+    padding: 0 5px 7px 5px;
+    height: 100%;
+    width: calc(100% - 250px);
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+
+    &-header {
+        margin-top: 5px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex: 0 0 auto;
+        position: relative;
+        font-size: 17px;
+        font-weight: 600;
+        background-color: #eeebeb;
+        color: #0f446c;
+        padding: 0 8px;
+        height: 3rem;
+    }
+
+    &-body {
+        flex: 1 1 auto;
+        position: relative;
+        overflow-y: auto;
+        overflow-x: auto;
+        background-color: #fcfcfc;
+        color: #424242;
+        padding: 5px;
+        margin-bottom: 38px;
+    }
+}
+
+
+.label-header {
+    font-size: 15px;
+    color: #1437ddf0;
+    font-weight: 600;
+}
+
+.label-data {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.error {
+    font-style: italic;
+    color: red;
+}
+
+.btn-primary {
+    color: #ffffff !important;
+    background: #3B82F6 !important;
+    border: 1px solid #3B82F6 !important;
+    @extend .p-button;
+}
+
+.success {
+    color: #ffffff !important;
+    background: #22c55e !important;
+    border: 1px solid #22c55e !important;
+}
+
+// .p-button {
+//     margin: 0;
+//     display: inline-flex;
+//     cursor: pointer;
+//     -webkit-user-select: none;
+//     user-select: none;
+//     align-items: center;
+//     vertical-align: bottom;
+//     text-align: center;
+//     overflow: hidden;
+//     position: relative;
+// }

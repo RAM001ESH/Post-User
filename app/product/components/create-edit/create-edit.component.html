@@ -1,0 +1,56 @@
+<div class="sys-card">
+    <div class="sys-card-header">Add Product</div>
+    <div class="sys-card-body">
+
+        <p-card>
+            <form [formGroup]="FrmEntry" class="w-full">
+                <div class="flex flex-column mt-2">
+                    <label for="title">Title</label>
+                    <input pInputText id="title" class="w-full" formControlName="title" />
+                </div>
+
+                <div class="flex flex-column mt-2">
+                    <label for="price">Price</label>
+                    <p-inputNumber id="price" inputId="integeronly" class="w-full"
+                        formControlName="price"></p-inputNumber>
+                </div>
+
+                <div class="flex flex-column mt-2">
+                    <label for="category">Category</label>
+                    <p-dropdown id="category" [options]="Lstcategory" class="w-full"
+                        formControlName="category"></p-dropdown>
+                </div>
+
+                <div class="flex flex-column mt-2">
+                    <label for="description">Description</label>
+                    <textarea rows="5" cols="30" class="form-control" formControlName="description"></textarea>
+                </div>
+
+                <div class="flex flex-column mt-2">
+                    <label for="image">Image URL</label>
+                    <div class="grid grid-cols-12 gap-x-2">
+                        <div class="col-span-11">
+                            <input pInputText formControlName="imageurl" class="w-full">
+                        </div>
+                        <div class="col-span-1">
+                            <p-button icon="pi pi-search" (click)="btnImageURLBlur()"></p-button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-column mt-2">
+                    <!-- <label for="image">Image URL</label> -->
+                    <img [src]="ImageURL" alt="Product Image" class="image-url">
+                </div>
+
+                <div class="flex justify-content-end space-x-2 mt-3">
+                    <p-button severity="secondary" (click)="btnResetForm()">Cancel</p-button>
+                    <p-button (click)="btnAddProduct()">Add</p-button>
+                </div>
+            </form>
+        </p-card>
+    </div>
+</div>
+
+<p-toast />
+<p-confirmDialog />

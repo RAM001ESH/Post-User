@@ -1,0 +1,35 @@
+// .show-card {
+//     width: 350px;
+//     background-color: #fff;
+//     box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.06), 0 1px 0 0 rgba(0, 0, 0, 0.02);
+//     position: fixed;
+//     // transition: .3s ease-in;
+//     transition: transform 0.4s ease, opacity 0.4s ease;
+//     z-index: 9999;
+//     float: right !important;
+//     top: 0;
+//     bottom: 0;
+//     right: 0;
+// }
+
+/* Base style for the card */
+.card-modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 400px;
+    background: white;
+    box-shadow: -2px 0 8px rgba(0, 0, 0, 0.2);
+    transform: translateX(100%);
+    opacity: 0;
+    transition: transform 5s linear;
+    // transition: transform 5s ease, opacity 0.5s ease, visibility 0.5s;
+    z-index: 99999;
+}
+
+/* When active (open) */
+.card-modal.active {
+    transform: translateX(0);
+    opacity: 1;
+}
