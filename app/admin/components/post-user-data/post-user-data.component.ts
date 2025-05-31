@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CreateTransaction, dateRanges } from '../../model/admin';
 import { DateConversion, MessageServicePrime } from 'src/app/shared/app.global';
 import { Month } from 'src/app/shared/common.model';
+import emailjs from 'emailjs-com';
 
 @Component({
   selector: 'app-post-user-data',
@@ -22,7 +23,7 @@ export class PostUserDataComponent {
 
   /* Model */
   public MlCreateTranscation: CreateTransaction = new CreateTransaction();
-  public MlDate: { fromDate?: Date, toDate?: Date } = {};
+  public MlDate: { duration?: string, fromDate?: Date, toDate?: Date } = {};
 
   /* Open Create Dialog */
   public IsOpenDialog: boolean = false;
@@ -55,12 +56,16 @@ export class PostUserDataComponent {
     this.getScheme();
     this.FrmEntry.controls['TranscationDate'].setValue(new Date());
     this.FrmEntry.controls['TranscationDate'].updateValueAndValidity();
-    this.MlDate = this.getDateRange(this.LstDateRange[0].value);
+    // this.MlDate = this.getDateRange(this.LstDateRange[0].value);
+    console.log(this.MlDate, this.LstTransaction);
+
   }
 
 
   dateChangeEvent(data: any) {
-    this.MlDate = this.getDateRange(data?.value?.value);
+    console.log(data);
+    this.MlDate.fromDate = this.MlDate.toDate = null;
+    if (data.value) this.MlDate = this.getDateRange(data?.value?.value);
   }
 
   getUserDetail() {
@@ -76,7 +81,8 @@ export class PostUserDataComponent {
   }
 
   btnSearch() {
-    if (!this.MlDate.fromDate || !this.MlDate.toDate) this._srvMessage.message('error', 'Required', 'Please fill the date');
+    this.LstTransaction = this.LstTransactionTemp = [];
+    if (!this.MlDate.fromDate && !this.MlDate.toDate && !this.Name) this._srvMessage.message('error', 'Required', 'Please fill the any one field');
     else
       this.getTransaction(this.MlDate.fromDate, this.MlDate.toDate, this.Name?.ContactID);
   }
@@ -126,14 +132,28 @@ export class PostUserDataComponent {
       })
     }
   }
+
+  sendMail(title: string, name: string, time: string, message: any, mailID: string, email: string) {
+    const SERVICEID = 'service_1srkmt53';
+    const TEMPLATEID = 'template_6t9kn4m';
+    emailjs.send(SERVICEID, TEMPLATEID, {
+      title: "May Month",
+      name: "Karthick",
+      time: "31-05-2025 05:15 PM",
+      message: "Welcome, Test it",
+      mailID: "ramesh13.selvaraj@gmail.com",
+      email: "ramesh13.selvaraj@gmail.com",
+    });
+  }
   //#endregion
 
   /* Date Change Event */
-  getDateRange(selection: string): { fromDate: Date, toDate: Date } {
+  getDateRange(selection: string): { duration: string, fromDate: Date, toDate: Date } {
     const today: Date = new Date();
     let fromDate: Date | any = new Date();
     let toDate: Date | any = new Date();
-
+    let duration: string = '';
+    duration = selection;
     switch (selection) {
       case 'Today':
         fromDate = toDate = today;
@@ -189,6 +209,6 @@ export class PostUserDataComponent {
         break;
     }
 
-    return { fromDate, toDate };
+    return { duration, fromDate, toDate };
   }
 }

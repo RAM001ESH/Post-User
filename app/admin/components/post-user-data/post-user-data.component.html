@@ -10,8 +10,8 @@
             <div class="flex flex-row space-x-2">
                 <div class="">
                     <div for="name">Name</div>
-                    <p-dropdown class="custom-dropdown-sm" [options]="LstUser" [showClear]="true" [autoDisplayFirst]="false" optionLabel="Name"
-                        [(ngModel)]="Name">
+                    <p-dropdown class="custom-dropdown-sm" [options]="LstUser" [showClear]="true"
+                        [autoDisplayFirst]="false" optionLabel="Name" [(ngModel)]="Name">
                         <ng-template pTemplate="header">
                             <div class="dropdown-header-row">
                                 <strong class="col-name">Name</strong>
@@ -32,8 +32,8 @@
 
                 <div>
                     <div>Date</div>
-                    <p-dropdown class="custom-dropdown-sm w-48" [showClear]="true" [options]="LstDateRange" optionLabel="value"
-                        (onChange)="dateChangeEvent($event)"></p-dropdown>
+                    <p-dropdown class="custom-dropdown-sm w-48" [showClear]="true" [autoDisplayFirst]="false"
+                        [options]="LstDateRange" optionLabel="value" (onChange)="dateChangeEvent($event)"></p-dropdown>
                 </div>
 
                 <div class="w-48">
@@ -69,19 +69,27 @@
                     </tr>
                 </ng-template>
 
+                <ng-template pTemplate="body">
+                    <tr *ngIf="!LstTransaction.length">
+                        <td colspan="7">No record available</td>
+                    </tr>
+                </ng-template>
+
                 <ng-template pTemplate="body" let-data let-rowIndex="rowIndex">
                     <tr *ngIf="LstTransaction.length == 0">
                         <td colspan="7">No record available</td>
-                    </tr> 
-                    <tr>
-                        <td>{{rowIndex + 1}}</td>
-                        <td>{{data.Name}}</td>
-                        <td>{{data.Scheme}}</td>
-                        <td>{{data.Amount | currency:'INR'}}</td>
-                        <td>{{data.TranscationDate}}</td>
-                        <td>{{data.CreditMonth}}</td>
-                        <td>{{data.EntryBy}}</td>
                     </tr>
+                    <ng-container *ngIf="LstTransaction.length > 0">
+                        <tr>
+                            <td>{{rowIndex + 1}}</td>
+                            <td>{{data.Name}}</td>
+                            <td>{{data.Scheme}}</td>
+                            <td>{{data.Amount | currency:'INR'}}</td>
+                            <td>{{data.TranscationDate}}</td>
+                            <td>{{data.CreditMonth}}</td>
+                            <td>{{data.EntryBy}}</td>
+                        </tr>
+                    </ng-container>
                 </ng-template>
             </p-table>
         </div>
